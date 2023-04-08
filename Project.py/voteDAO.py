@@ -96,9 +96,9 @@ if __name__ == "__main__":
     #voteDAO.createdatase() #This was used to initially to create the database - not needed now as it ran successfully.
     #voteDAO.createtable() #Also this as it was successfully executed.
 
-    #data = ("Lyons", "123.123.123.123") #inputing our first vote - tea type and ip address.
-    #voteDAO.create(data) #here we created one input into our voting system
+    data = ("Barrys", "123.123.123.123") #inputing our first vote - tea type and ip address.
+    voteDAO.create(data) #here we created one input into our voting system
     count = voteDAO.countvotes('Lyons') #counting the votes for the tea lyons
     print (count) #show the count of votes so far.
 
-    print("sanity") #checking if the databases was created - santity returned if it did which it did.
+    #print("sanity") #checking if the databases was created - santity returned if it did which it did.
