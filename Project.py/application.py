@@ -6,7 +6,8 @@ app = Flask(__name__, static_url_path='', static_folder='static')
 teas = [
     {'name':'Barrys'},
     {'name':'Lyons'},
-    {'name':'PJ Tips'},
+    {'name':'PG Tips'},
+    {'name':'Tetleys'},
     ]
 
 @app.route('/tea', methods = ['GET'])
