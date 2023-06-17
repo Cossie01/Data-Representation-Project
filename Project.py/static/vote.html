@@ -34,6 +34,13 @@
             .selected {
                 background-color: #f0f0f0;
             }
+            .submit-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
         </style>
     </head>
     <body>
@@ -84,8 +91,14 @@
                 </div>
             </div>
         </div>
+        <div class="submit-button">
+            <button type="submit" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+        </div>
     
         <script>
+            function handleSubmit() {
+                window.location.href = 'thankyou.html'; // Redirect to thankyou.html
+            }
             function updateVoteCount(teaname) {
                 var votesElement = document.getElementById(teaname + "-votes");
                 var votes = parseInt(votesElement.innerHTML);
@@ -141,6 +154,7 @@
             }
 
             init()
+            
         </script>
     </body>
 </html>
