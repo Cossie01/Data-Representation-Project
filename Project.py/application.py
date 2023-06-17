@@ -31,7 +31,7 @@ def getCountForTeas(teaname):
 def getAllCountForTeas():
     allcounts =[]
     for tea in teas:
-        teaname=teas['name']
+        teaname=tea['name']
         count = voteDAO.countvotes(teaname)
         allcounts.append({teaname:count})
     return jsonify(allcounts)
