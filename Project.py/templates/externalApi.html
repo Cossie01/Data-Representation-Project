@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea List</title>
+    <style>
+        img {
+            width: 400px; 
+            height: auto; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Tea List</h1>
+    <ul>
+        {% for tea in teas %}
+        <li>
+            <h2>{{ tea.name }}</h2>
+            {% if tea.image %}
+            <img src="{{ tea.image }}" alt="{{ tea.name }} Image">
+            {% endif %}
+            <p><strong>Origin:</strong> {{ tea.origin }}</p>
+            <p><strong>Caffeine:</strong> {{ tea.caffeine }}</p>
+            <p><strong>Description:</strong> {{ tea.description }}</p>
+            <p><strong>Color Description:</strong> {{ tea.colorDescription }}</p>
+            <p><strong>Taste Description:</strong> {{ tea.tasteDescription }}</p>
+            {% if tea.types %}
+                <h3>Types:</h3>
+                <ul>
+                    {% for type, details in tea.types.items() %}
+                        <li>
+                            <h4>{{ details.name }}</h4>
+                            {% if details.image %}
+                            <img src="{{ details.image }}" alt="{{ details.name }} Image">
+                            {% endif %}
+                            <p><strong>Origin:</strong> {{ details.origin }}</p>
+                            <p><strong>Caffeine:</strong> {{ details.caffeine }}</p>
+                            <p><strong>Description:</strong> {{ details.description }}</p>
+                            <p><strong>Color Description:</strong> {{ details.colorDescription }}</p>
+                            <p><strong>Taste Description:</strong> {{ details.tasteDescription }}</p>
+                            <!-- Add additional fields for each tea type as needed -->
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
