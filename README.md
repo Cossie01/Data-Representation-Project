@@ -13,17 +13,17 @@
 ## Installation
 
 1. Clone the repository:
-   ![clone](/static/Images/gitclone.png)
+   ![clone](Project.py/static/Images/gitclone.PNG)
 
 2. Install the required dependencies:
-   ![requirements](/static/Images/pip_install.png)
+   ![requirements](Project.py/static/Images/pip_install.PNG)
 
 3. Set up the SQL database by executing the provided SQL scripts.
 
 4. Configure the database connection in the `config.py` file.
 
 5. Start the Flask server:
-   ![application.py](/static/Images/python_application.png)
+   ![application.py](Project.py/static/Images/python_application.PNG)
 
 6. Open your web browser and access the application at [http://localhost:5000](http://localhost:5000).
 
