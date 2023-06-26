@@ -123,21 +123,6 @@ def loginPage():
 
     return render_template('loginPage.html')
 
-#Pagination and sorting
-
-@app.route('/teas', methods=['GET'])
-def getTeas():
-    page = request.args.get('page', default=1, type=int)
-    per_page = request.args.get('per_page', default=10, type=int)
-    sort_by = request.args.get('sort_by', default='name', type=str)
-    sort_order = request.args.get('sort_order', default='asc', type=str)
-    
-    # Apply pagination and sorting logic to your data retrieval
-    teas = get_teas_from_database(page, per_page, sort_by, sort_order)
-    return jsonify(teas)
-
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
