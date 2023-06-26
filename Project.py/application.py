@@ -28,15 +28,13 @@ def getExternalTeas():
         response = requests.get(api_url)
         response.raise_for_status()  
         teas = response.json()
-        for tea in teas:
-            print(teas)
         return render_template('externalApi.html', teas=teas)
     except requests.exceptions.RequestException as e:
         abort(500, f"An error occurred while retrieving teas from the external API: {e}")
 
 #Internal Api
 @app.route('/tea', methods = ['GET'])
-@limiter.limit("10/minute")
+@limiter.limit("10/minute") #limit usage
 def getAllTeas():
     return jsonify(teas)
 
@@ -124,6 +122,20 @@ def loginPage():
             return render_template('loginPage.html', error=error_message)
 
     return render_template('loginPage.html')
+
+#Pagination and sorting
+
+@app.route('/teas', methods=['GET'])
+def getTeas():
+    page = request.args.get('page', default=1, type=int)
+    per_page = request.args.get('per_page', default=10, type=int)
+    sort_by = request.args.get('sort_by', default='name', type=str)
+    sort_order = request.args.get('sort_order', default='asc', type=str)
+    
+    # Apply pagination and sorting logic to your data retrieval
+    teas = get_teas_from_database(page, per_page, sort_by, sort_order)
+    return jsonify(teas)
+
 
 
 

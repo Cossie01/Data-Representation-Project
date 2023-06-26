@@ -2,3 +2,6 @@ First page is a the loginPage to add your email and password.
 Second page is to vote on which teas is best from the list.
 Once the vote has been submitted it takes you to a thank you page.
 On the thank you page there is a see results page. 
+On the results page you can see the current votes in table and chart form.
+Within the results page you can view More Tea info which is connected to an external Api.
+Also you can click on the Play music button that will play the tea song. Hit again to turn it off.
