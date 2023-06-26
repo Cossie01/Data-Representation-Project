@@ -54,7 +54,7 @@ def getCountForTeas(teaname):
     count =voteDAO.countvotes(teaname)
     return jsonify({teaname:count})
 
-@app.route('/vote', methods = ['GET'])
+@app.route('/vote-count', methods = ['GET'])
 def getAllCountForTeas():
     allcounts =[]
     for tea in teas:
@@ -80,28 +80,7 @@ def updateTea(teaname):
 
 #LoginServer
 def validate_credentials(email, password):
-    if email == 'example@example.com' and password == 'password':
-        return True
-    else:
-        return False
-
-@app.route('/loginPage', methods=['GET', 'POST'])
-def loginPage():
-    session.clear()  
-
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        if validate_credentials(email, password):
-            session['username'] = email  
-            return redirect(url_for('vote'))
-        else:
-            error_message = "Invalid credentials. Please try again."
-            return render_template('loginPage.html', error=error_message)
-
-    return render_template('loginPage.html')
-
+    return True
 
 @app.route('/logout')
 def logout():
@@ -116,11 +95,28 @@ def vote():
 
     return render_template('vote.html')
 
+#debug
+@app.route('/loginPage', methods=['GET', 'POST'])
+def loginPage():
+    session.clear()  
+
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        print(f"Email: {email}")  
+        print(f"Password: {password}")  
+
+        if validate_credentials(email, password):
+            session['username'] = email  
+            return redirect(url_for('vote'))
+        else:
+            error_message = "Invalid credentials. Please try again."
+            return render_template('loginPage.html', error=error_message)
+
+    return render_template('loginPage.html')
+
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
-if __name__ == "__main__":
     app.run(debug=True)
