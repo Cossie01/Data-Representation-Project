@@ -1,31 +1,29 @@
 # Data-Representation-Project
 <h1> Get Thirsty!</h1>
-<h3>Welcome to Get Thirsty! a Flask-based voting system that settles the age-old question of which tea is the best. Users can vote for their favorite tea, view the results, and explore tea categories using an external API.</h3>
+<h3>Welcome to Get Thirsty! A Flask-based voting system that settles the age-old question of which Tea is the best. Users can vote for their favorite tea, view the results, and explore tea categories using an external API.</h3>
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 
 ## Installation
 
 1. Clone the repository:
-   ![clone](/static/images/gitclone.png)
+   ![clone](/static/Images/gitclone.png)
 
 2. Install the required dependencies:
-   ![requirements](/static/images/pip_install.png)
+   ![requirements](/static/Images/pip_install.png)
 
 3. Set up the SQL database by executing the provided SQL scripts.
 
 4. Configure the database connection in the `config.py` file.
 
 5. Start the Flask server:
-   ![application.py](/static/images/python_application.png)
+   ![application.py](/static/Images/python_application.png)
 
 6. Open your web browser and access the application at [http://localhost:5000](http://localhost:5000).
 
