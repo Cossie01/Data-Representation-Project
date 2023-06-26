@@ -1,9 +1,11 @@
-from flask import Flask, jsonify, abort, request, render_template
+from flask import Flask, jsonify, abort, request, render_template, redirect, url_for, session
 from voteDAO import voteDAO
 import requests
 from flask_limiter import Limiter
 
 app = Flask(__name__, static_url_path='', static_folder='static')
+
+app.secret_key = 'someSecretKey'
 
 #Limiter
 def get_remote_address():
@@ -71,11 +73,53 @@ def updateTea(teaname):
 
     for tea in teas:
         if tea['name'] == teaname:
-            # Update the name
             tea['name'] = new_tea_name
             return jsonify(tea)
     
     abort(404, f"Tea with name {teaname} not found")
+
+#LoginServer
+def validate_credentials(email, password):
+    if email == 'example@example.com' and password == 'password':
+        return True
+    else:
+        return False
+
+@app.route('/loginPage', methods=['GET', 'POST'])
+def loginPage():
+    session.clear()  
+
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        if validate_credentials(email, password):
+            session['username'] = email  
+            return redirect(url_for('vote'))
+        else:
+            error_message = "Invalid credentials. Please try again."
+            return render_template('loginPage.html', error=error_message)
+
+    return render_template('loginPage.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('loginPage'))
+
+
+@app.route('/vote')
+def vote():
+    if 'username' not in session:
+        return redirect(url_for('loginPage'))
+
+    return render_template('vote.html')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
 
 if __name__ == "__main__":
