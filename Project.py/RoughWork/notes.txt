@@ -1,1 +1,4 @@
 First page is a the loginPage to add your email and password.
+Second page is to vote on which teas is best from the list.
+Once the vote has been submitted it takes you to a thank you page.
+On the thank you page there is a see results page. 

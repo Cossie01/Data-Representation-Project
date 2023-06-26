@@ -101,8 +101,9 @@
     
         <script>
             function handleSubmit() {
-                window.location.href = 'thankyou.html'; // Redirect to thankyou.html
+                window.location.href = '{{ url_for("thankyou") }}';
             }
+
             function updateVoteCount(teaname) {
                 var votesElement = document.getElementById(teaname + "-votes");
                 var votes = parseInt(votesElement.innerHTML);

@@ -45,42 +45,40 @@
         <div class="bottom-right">
             <button onclick="toggleMusic()" id="musicButton" class="btn btn-primary green-button">Play Music</button>
         </div>
-        <audio id="music" src="teaSong.mp3"></audio>
+        <audio id="music" src="{{ url_for('static', filename='teaSong.mp3') }}"></audio>
 
         <script>
             function getAll() {
-                $.ajax({
-                    "url": "/vote",
-                    "method":"GET",
-                    "data":"",
-                    "dataType": "JSON",
-                    "success": function(result) {
-                        console.log("AJAX success:", result);
-                        var labels =[];
-                        var data = [];
-                        if (Array.isArray(result)) {
-                            for (tea of result){
-                                if (typeof tea === 'object' && tea !== null) {
-                                    teaname = Object.keys(tea)[0];
-                                    count = tea[teaname]
-                                    console.log(teaname, count);
-                                    addCountToTable(teaname, count);
-                                    labels.push(teaname);
-                                    data.push(count);
-                                }else{
-                                    console.log("Unexpected item in result array:", tea);
-                                }
-                            }
-                            createChart(labels,data);
-                        }else{
-                            console.log("AJAX response is not an array:", result);
-                        }
-                    },
-                    "error": function(xhr, status, error) {
-                        console.log("status:"+status+" message:"+error);
-                    }
-                });
+    $.ajax({
+        "url": "/vote-count",
+        "method": "GET",
+        "data": "",
+        "dataType": "JSON",
+        "success": function(result) {
+            console.log("AJAX success:", result);
+            var labels = [];
+            var data = [];
+            if (Array.isArray(result)) {
+                for (var i = 0; i < result.length; i++) {
+                    var tea = result[i];
+                    var teaname = Object.keys(tea)[0];
+                    var count = tea[teaname];
+                    console.log(teaname, count);
+                    addCountToTable(teaname, count);
+                    labels.push(teaname);
+                    data.push(count);
+                }
+                createChart(labels, data);
+            } else {
+                console.log("AJAX response is not an array:", result);
             }
+        },
+        "error": function(xhr, status, error) {
+            console.log("status:" + status + " message:" + error);
+        }
+    });
+}
+
 
             function addCountToTable(teaname, teacount){
                 console.log(teaname,teacount);

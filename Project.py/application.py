@@ -95,6 +95,15 @@ def vote():
 
     return render_template('vote.html')
 
+@app.route('/thankyou')
+def thankyou():
+    return render_template('thankyou.html')
+
+@app.route('/results')
+def results():
+    return render_template('results.html')
+
+
 #debug
 @app.route('/loginPage', methods=['GET', 'POST'])
 def loginPage():
