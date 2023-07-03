@@ -2,6 +2,7 @@ from flask import Flask, jsonify, abort, request, render_template, redirect, url
 from voteDAO import voteDAO
 import requests
 from flask_limiter import Limiter
+import json
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 
@@ -31,6 +32,9 @@ def getExternalTeas():
         return render_template('externalApi.html', teas=teas)
     except requests.exceptions.RequestException as e:
         abort(500, f"An error occurred while retrieving teas from the external API: {e}")
+
+
+
 
 #Internal Api
 @app.route('/tea', methods = ['GET'])

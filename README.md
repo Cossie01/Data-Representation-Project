@@ -26,6 +26,8 @@
 
 6. Open your web browser and access the application at [http://localhost:5000](http://localhost:5000).
 
+7. It is also held on Pythonanywhere.com
+
 
 ## Usage
 
