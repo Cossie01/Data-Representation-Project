@@ -1,6 +1,7 @@
 # Data-Representation-Project
-<h1> Get Thirsty!</h1>
-<h3>Welcome to Get Thirsty! A Flask-based voting system that settles the age-old question of which Tea is the best. Users can vote for their favorite tea, view the results, and explore tea categories using an external API.</h3>
+
+## Get Thirsty!
+Welcome to Get Thirsty! A Flask-based voting system that settles the age-old question of which Tea is the best. Users can vote for their favorite tea, view the results, and explore tea categories using an external API.
 
 ## Table of Contents
 
@@ -8,79 +9,81 @@
 - [Usage](#usage)
 - [Features](#features)
 
-
 ## Installation
 
 1. Clone the repository:
-   ![clone](Project.py/static/Images/gitclone.PNG)
+    ```
+    git clone <repository_link>
+    ```
+    Example clone command: ![clone](Project.py/static/Images/gitclone.PNG)
 
-2. Install the required dependencies:
-   ![requirements](Project.py/static/Images/pip_install.PNG)
+2. Navigate to the project directory and install the required dependencies:
+    ```
+    cd Data-Representation-Project
+    pip install -r requirements.txt
+    ```
+    Example command: ![requirements](Project.py/static/Images/pip_install.PNG)
 
 3. Set up the SQL database by executing the provided SQL scripts found in the `voteDAO.py` file.
 
 4. Configure the database connection in the `dbconfig.py` file.
 
 5. Start the Flask server:
-   ![application.py](Project.py/static/Images/python_application.PNG)
+    ```
+    python application.py
+    ```
+    Example command: ![application.py](Project.py/static/Images/python_application.PNG)
 
 6. Open your web browser and access the application at [http://localhost:5000](http://localhost:5000).
 
-7. It is also held on Pythonanywhere.com
-
+7. It is also hosted on PythonAnywhere at [ciaraosull.pythonanywhere.com/loginPage](https://ciaraosull.pythonanywhere.com/loginPage).
 
 ## Usage
 
-**Login First:**
-1. Navigate to the login page (/loginPage)
-2. Enter your email address. Must include a valid email address with @ symbol
-3. Enter a password. It must contain 6 characters as well as least one uppercase and one lowercase and one number.
-4. Hit submit
-
-**Vote for your favorite tea:**
-
-1. Voting page loads (/vote)
-2. Choose your preferred tea from the available options.
-3. Hover over your preferred tea and click enter. The vote count increase by 1.
-3. Click the "Submit" button to submit your vote.
-4. You will be redirected to a thank you page with a carousel effect.
-5. The `/vote/<teaname>` endpoint is rate-limited to 1 request per minute per IP address.
-
-**Thank you for Voting page:**
-1. Thank you page loads (/thankyou)
-2. The carousel effect will be enforced after 1 second.
-3. Click on the see results to see the final outcome of the vote.
-
-**View the voting results:**
-
-1. From the thank you page, click the "View Results" button. (/results)
-2. The total votes will be displayed in both table and chart form.
-
-
-**Play the Tea Song:**
-
-- On the results page, click the "Play Tea Song" button to start playing the tea-themed song.
-- Click the same button to turn off the music.
-
-**Explore Tea Categories using an external API:**
-
-- On the results page, click the "More Tea Info" button.
-- This will connect to an external API that provides information, images, and relevant data for various tea categories.
-- External Api can be found here: https://boonakitea.cyclic.app/
-
-**Note:** Usage limits are in place to ensure fair access and prevent abuse.
+**Note:** Some endpoints are rate-limited to prevent abuse.
 - The `/tea` endpoint is rate-limited to 10 requests per minute per IP address.
 - The `/vote/<teaname>` endpoint is rate-limited to 1 request per minute per IP address.
 
+Follow the steps below to use the application:
+
+**User Login:**
+1. Navigate to the login page (/loginPage)
+2. Enter a valid email address (includes @ symbol).
+3. Enter a password (at least 6 characters, with at least one uppercase, one lowercase, and one number).
+4. Click "Submit" to log in.
+
+**Vote for your favorite tea:**
+1. Navigate to the voting page (/vote)
+2. Choose your preferred tea from the available options.
+3. Click on your preferred tea to cast your vote. The vote count will increase by 1.
+4. Click "Submit" to submit your vote. You'll be redirected to a thank you page with a carousel effect.
+
+**Thank you for Voting page:**
+1. This page loads after voting (/thankyou)
+2. The carousel effect begins 1 second after the page loads.
+3. Click "See Results" to view the final voting outcome.
+
+**View the voting results:**
+1. From the thank you page, click "View Results" (/results)
+2. Voting results are displayed in both table and chart form.
+
+**Play the Tea Song:**
+- On the results page, click "Play Tea Song" to start playing a tea-themed song.
+- Click the same button again to stop the music.
+
+**Explore Tea Categories using an external API:**
+- On the results page, click "More Tea Info". 
+- This connects to an external API that provides information, images, and relevant data for various tea categories.
+- The API used is available at [boonakitea.cyclic.app](https://boonakitea.cyclic.app/).
 
 ## Features
 
 - CRUD operations through a REST API using Flask.
 - SQL database integration for storing and retrieving voting data.
-- AJAX calls to perform CRUD operations and update the web interface dynamically.
-- Voting system to settle the debate on the best tea.
-- Results page displaying total votes in table and chart form.
+- AJAX calls for dynamic web interface updates.
+- Voting system to determine the best tea in Ireland.
 - Carousel effect on the thank you page.
-- Tea song that can be played and turned off.
+- Results page displaying total votes in table and chart format.
+- An interactive tea song feature.
 - Integration with an external API for exploring tea categories.
 
